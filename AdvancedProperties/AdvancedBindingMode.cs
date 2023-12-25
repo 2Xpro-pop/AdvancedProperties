@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdvancedProperties;
-public class AdvancedObject
+public enum AdvancedBindingMode
 {
-
+    Default,
+    TwoWay,
+    OneWay,
+    OneWayToSource,
+    OneTime,
 }

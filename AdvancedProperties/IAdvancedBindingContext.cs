@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdvancedProperties;
-public class AdvancedObject
+public interface IAdvancedBindingContext
 {
-
 }
