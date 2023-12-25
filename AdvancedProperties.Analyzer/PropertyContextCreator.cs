@@ -55,6 +55,7 @@ public class PropertyContextCreator : ISourceGenerator
         
 
         return $@"
+#nullable enable
 using System;
 using AdvancedProperties;
 
@@ -77,11 +78,16 @@ partial class {type}
         var valueTypeInfo = semanticModel.GetTypeInfo(registerInfo.TValue);
         var fullNameValueType = valueTypeInfo.Type.ToString();
 
+        if (registerInfo.TValue is NullableTypeSyntax)
+        {
+            fullNameValueType += '?';
+        }
+
         return $@"
 protected AdvancedPropertyContext<{registerInfo.TOwner},{fullNameValueType}> {registerInfo.PropertyName}Context
 {{
     get; private set;
-}}
+}} = null!;
 
 public {fullNameValueType} Get{registerInfo.PropertyName}()
 {{

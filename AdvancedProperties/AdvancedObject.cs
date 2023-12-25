@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 namespace AdvancedProperties;
 public partial class AdvancedObject : IAdvancedBindingAccessor
 {
-    public static readonly AdvancedProperty<AdvancedObject, IAdvancedBindingAccessor> BindingContextProperty =
-        AdvancedProperty.Register<AdvancedObject, IAdvancedBindingAccessor>(nameof(BindingContext));
+    public static readonly AdvancedProperty<AdvancedObject, IAdvancedBindingAccessor?> BindingContextProperty =
+        AdvancedProperty.Register<AdvancedObject, IAdvancedBindingAccessor?>(nameof(BindingContext));
 
-    public IAdvancedBindingAccessor BindingContext
+    public IAdvancedBindingAccessor? BindingContext
     {
         get => GetBindingContextProperty();
         set => SetBindingContextProperty(value);
     }
 
-    public IAdvancedBindingContext Access(AdvancedBinding binding) => throw new NotImplementedException();
+    public AdvancedObject()
+    {
+        Init();
+    }
+
+    public virtual IAdvancedBindingContext? Access(AdvancedBinding binding)
+    {
+        return null;
+    }
 
 
 }

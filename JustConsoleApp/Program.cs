@@ -3,4 +3,4 @@
 var advancedObject = new AdvancedObject();
 
 
-Console.WriteLine(advancedObject);
+Console.WriteLine(advancedObject.BindingContext ?? "null");
