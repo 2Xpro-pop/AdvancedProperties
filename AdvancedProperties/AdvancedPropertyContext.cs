@@ -73,4 +73,39 @@ public class AdvancedPropertyContext<TOwner, TValue> : AdvancedPropertyContext
     {
         get; protected set;
     }
+
+    public bool SetValue(TValue value, AdvancedSetterPriority priority)
+    {
+
+        if (priority > CurrentPriority)
+        {
+            return false;
+        }
+
+        if (Property.ValidateValue is AdvancedProperty.ValidateValueDelegate<TOwner, TValue> validateValueDelegate)
+        {
+
+            if (!validateValueDelegate(Owner, value))
+            {
+                return false;
+            }
+        }
+
+        if (Property.CoerceValue is AdvancedProperty.CoerceValueDelegate<TOwner, TValue> coerceValueDelegate)
+        {
+            value = coerceValueDelegate(Owner, value);
+        }
+
+        if (Property is AdvancedProperty.PropertyChangedDelegate<TOwner, TValue> propertyChangedDelegate)
+        {
+            propertyChangedDelegate(Owner, Value, value);
+        }
+
+        Value = value;
+        Context ??= value ?? AdvancedProperty.UnsetValue;
+        CurrentPriority = priority;
+
+        return true;
+    }
+
 }

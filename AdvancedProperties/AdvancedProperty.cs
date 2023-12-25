@@ -86,12 +86,13 @@ public abstract class AdvancedProperty
 
 public class AdvancedProperty<TOwner, TValue> : AdvancedProperty
 {
-    public AdvancedProperty(string name, bool isReadOnly, TValue defaultValue, AdvancedBindingMode bindingMode, bool isAttached, bool isContent, CoerceValueDelegate<TOwner, TValue>? coerceValue, ValidateValueDelegate<TOwner, TValue>? validateValue, CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValue) : base(name, typeof(TOwner), isReadOnly, typeof(TValue), defaultValue, bindingMode, isAttached, isContent)
+    public AdvancedProperty(string name, bool isReadOnly, TValue defaultValue, AdvancedBindingMode bindingMode, bool isAttached, bool isContent, CoerceValueDelegate<TOwner, TValue>? coerceValue, ValidateValueDelegate<TOwner, TValue>? validateValue, CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValue, PropertyChangedDelegate<TOwner, TValue>? propertyChanged) : base(name, typeof(TOwner), isReadOnly, typeof(TValue), defaultValue, bindingMode, isAttached, isContent)
     {
         DefaultValue = defaultValue;
         CoerceValue = coerceValue;
         ValidateValue = validateValue;
         CreateDefaultValue = createDefaultValue;
+        PropertyChanged = propertyChanged;
     }
 
     public CoerceValueDelegate<TOwner, TValue>? CoerceValue
@@ -105,6 +106,11 @@ public class AdvancedProperty<TOwner, TValue> : AdvancedProperty
     }
 
     public CreateDefaultValueDelegate<TOwner, TValue>? CreateDefaultValue
+    {
+        get;
+    }
+
+    public PropertyChangedDelegate<TOwner, TValue>? PropertyChanged
     {
         get;
     }
