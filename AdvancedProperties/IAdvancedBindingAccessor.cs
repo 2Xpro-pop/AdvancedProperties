@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace AdvancedProperties;
 public interface IAdvancedBindingAccessor
 {
-    public IAdvancedBindingContext Access(AdvancedBinding binding);
+    public IAdvancedBindingContext? Access(AdvancedBinding binding);
 }

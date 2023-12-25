@@ -38,7 +38,7 @@ public abstract class AdvancedProperty
         IsReadOnly = isReadOnly;
         ReturnType = returnType;
         DefaultValue = defaultValue;
-        BindingMode = bindingMode;
+        DefaultBindingMode = bindingMode;
         IsAttached = isAttached;
         IsContent = isContent;
     }
@@ -68,7 +68,7 @@ public abstract class AdvancedProperty
         get;
     }
 
-    public AdvancedBindingMode BindingMode
+    public AdvancedBindingMode DefaultBindingMode
     {
         get;
     }
@@ -82,11 +82,23 @@ public abstract class AdvancedProperty
     {
         get;
     }
+
+    public static AdvancedProperty<TOwner, TValue> Register<TOwner, TValue>(
+        string name,
+        TValue? defaultValue = default,
+        AdvancedBindingMode defaultBindingMode = AdvancedBindingMode.OneWay,
+        CoerceValueDelegate<TOwner, TValue>? coerceValueDelegate = null,
+        ValidateValueDelegate<TOwner, TValue>? validateValueDelegate = null,
+        CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValueDelegate = null,
+        PropertyChangedDelegate<TOwner, TValue>? propertyChangedDelegate = null)
+    {
+        return new(name, false, defaultValue, defaultBindingMode, false, false, coerceValueDelegate, validateValueDelegate, createDefaultValueDelegate, propertyChangedDelegate);
+    }
 }
 
 public class AdvancedProperty<TOwner, TValue> : AdvancedProperty
 {
-    public AdvancedProperty(string name, bool isReadOnly, TValue defaultValue, AdvancedBindingMode bindingMode, bool isAttached, bool isContent, CoerceValueDelegate<TOwner, TValue>? coerceValue, ValidateValueDelegate<TOwner, TValue>? validateValue, CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValue, PropertyChangedDelegate<TOwner, TValue>? propertyChanged) : base(name, typeof(TOwner), isReadOnly, typeof(TValue), defaultValue, bindingMode, isAttached, isContent)
+    public AdvancedProperty(string name, bool isReadOnly, TValue? defaultValue, AdvancedBindingMode bindingMode, bool isAttached, bool isContent, CoerceValueDelegate<TOwner, TValue>? coerceValue, ValidateValueDelegate<TOwner, TValue>? validateValue, CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValue, PropertyChangedDelegate<TOwner, TValue>? propertyChanged) : base(name, typeof(TOwner), isReadOnly, typeof(TValue), defaultValue, bindingMode, isAttached, isContent)
     {
         DefaultValue = defaultValue;
         CoerceValue = coerceValue;

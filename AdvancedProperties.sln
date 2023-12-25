@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedProperties", "AdvancedProperties\AdvancedProperties.csproj", "{F6D65470-BDD0-4BDF-9831-EFC2A99023A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedProperties", "AdvancedProperties\AdvancedProperties.csproj", "{F6D65470-BDD0-4BDF-9831-EFC2A99023A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedProperties.Analyzer", "AdvancedProperties.Analyzer\AdvancedProperties.Analyzer.csproj", "{BBECF1EE-05B0-45D7-9CCC-4580C9C96102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustConsoleApp", "JustConsoleApp\JustConsoleApp.csproj", "{D8DE9A2E-546B-48E0-9532-D7A567DDBB92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F6D65470-BDD0-4BDF-9831-EFC2A99023A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D65470-BDD0-4BDF-9831-EFC2A99023A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6D65470-BDD0-4BDF-9831-EFC2A99023A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBECF1EE-05B0-45D7-9CCC-4580C9C96102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBECF1EE-05B0-45D7-9CCC-4580C9C96102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBECF1EE-05B0-45D7-9CCC-4580C9C96102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBECF1EE-05B0-45D7-9CCC-4580C9C96102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DE9A2E-546B-48E0-9532-D7A567DDBB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DE9A2E-546B-48E0-9532-D7A567DDBB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DE9A2E-546B-48E0-9532-D7A567DDBB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DE9A2E-546B-48E0-9532-D7A567DDBB92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

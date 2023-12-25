@@ -74,7 +74,7 @@ public class AdvancedPropertyContext<TOwner, TValue> : AdvancedPropertyContext
         get; protected set;
     }
 
-    public bool SetValue(TValue value, AdvancedSetterPriority priority)
+    public bool SetValue(TValue value, AdvancedSetterPriority priority = AdvancedSetterPriority.Direct)
     {
 
         if (priority > CurrentPriority)

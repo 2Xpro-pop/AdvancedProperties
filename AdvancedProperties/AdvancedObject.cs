@@ -5,7 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdvancedProperties;
-public class AdvancedObject
+public partial class AdvancedObject : IAdvancedBindingAccessor
 {
+    public static readonly AdvancedProperty<AdvancedObject, IAdvancedBindingAccessor> BindingContextProperty =
+        AdvancedProperty.Register<AdvancedObject, IAdvancedBindingAccessor>(nameof(BindingContext));
+
+    public IAdvancedBindingAccessor BindingContext
+    {
+        get => GetBindingContextProperty();
+        set => SetBindingContextProperty(value);
+    }
+
+    public IAdvancedBindingContext Access(AdvancedBinding binding) => throw new NotImplementedException();
+
 
 }
