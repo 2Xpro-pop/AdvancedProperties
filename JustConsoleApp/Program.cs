@@ -1,6 +1,11 @@
 ﻿using AdvancedProperties;
 
 var advancedObject = new AdvancedObject();
+var anotherObject = new AdvancedObject();
 
+advancedObject.PropertyChanged += (s, e) =>
+{
+    Console.WriteLine(e.PropertyName);
+};
 
-Console.WriteLine(advancedObject.BindingContext ?? "null");
+advancedObject.BindingContext = anotherObject;

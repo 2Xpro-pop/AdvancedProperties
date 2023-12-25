@@ -90,13 +90,13 @@ public abstract class AdvancedProperty
         CoerceValueDelegate<TOwner, TValue>? coerceValueDelegate = null,
         ValidateValueDelegate<TOwner, TValue>? validateValueDelegate = null,
         CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValueDelegate = null,
-        PropertyChangedDelegate<TOwner, TValue>? propertyChangedDelegate = null)
+        PropertyChangedDelegate<TOwner, TValue>? propertyChangedDelegate = null) where TOwner : AdvancedObject
     {
         return new(name, false, defaultValue, defaultBindingMode, false, false, coerceValueDelegate, validateValueDelegate, createDefaultValueDelegate, propertyChangedDelegate);
     }
 }
 
-public class AdvancedProperty<TOwner, TValue> : AdvancedProperty
+public class AdvancedProperty<TOwner, TValue> : AdvancedProperty where TOwner: AdvancedObject
 {
     public AdvancedProperty(string name, bool isReadOnly, TValue? defaultValue, AdvancedBindingMode bindingMode, bool isAttached, bool isContent, CoerceValueDelegate<TOwner, TValue>? coerceValue, ValidateValueDelegate<TOwner, TValue>? validateValue, CreateDefaultValueDelegate<TOwner, TValue>? createDefaultValue, PropertyChangedDelegate<TOwner, TValue>? propertyChanged) : base(name, typeof(TOwner), isReadOnly, typeof(TValue), defaultValue, bindingMode, isAttached, isContent)
     {

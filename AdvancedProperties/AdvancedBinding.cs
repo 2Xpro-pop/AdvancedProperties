@@ -8,6 +8,7 @@ namespace AdvancedProperties;
 public class AdvancedBinding
 {
     public static readonly object BindingContextSource = new();
+    public static readonly object Self = new();
 
     public string? Path
     {

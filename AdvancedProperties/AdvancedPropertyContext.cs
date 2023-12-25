@@ -19,7 +19,7 @@ public abstract class AdvancedPropertyContext
     }
 }
 
-public class AdvancedPropertyContext<TOwner, TValue> : AdvancedPropertyContext
+public class AdvancedPropertyContext<TOwner, TValue> : AdvancedPropertyContext where TOwner : AdvancedObject
 {
     public AdvancedPropertyContext(AdvancedProperty<TOwner, TValue> advancedProperty, TOwner owner) : base(advancedProperty)
     {
@@ -96,12 +96,16 @@ public class AdvancedPropertyContext<TOwner, TValue> : AdvancedPropertyContext
             value = coerceValueDelegate(Owner, value);
         }
 
+        
+        var oldValue = Value;
+        Value = value;
+
         if (Property is AdvancedProperty.PropertyChangedDelegate<TOwner, TValue> propertyChangedDelegate)
         {
-            propertyChangedDelegate(Owner, Value, value);
+            propertyChangedDelegate(Owner, oldValue, value);
         }
+        Owner.OnPropertyChanged(Property, oldValue, Value);
 
-        Value = value;
         Context ??= value ?? AdvancedProperty.UnsetValue;
         CurrentPriority = priority;
 
