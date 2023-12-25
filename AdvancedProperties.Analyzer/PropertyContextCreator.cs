@@ -84,20 +84,20 @@ partial class {type}
         }
 
         return $@"
-protected AdvancedPropertyContext<{registerInfo.TOwner},{fullNameValueType}> {registerInfo.PropertyName}Context
-{{
-    get; private set;
-}} = null!;
+    protected AdvancedPropertyContext<{registerInfo.TOwner},{fullNameValueType}> {registerInfo.PropertyName}Context
+    {{
+        get; private set;
+    }} = null!;
 
-public {fullNameValueType} Get{registerInfo.PropertyName}()
-{{
-    return {registerInfo.PropertyName}Context.Value;
-}}
+    public {fullNameValueType} Get{registerInfo.PropertyName}()
+    {{
+        return {registerInfo.PropertyName}Context.Value;
+    }}
 
-public void Set{registerInfo.PropertyName}({fullNameValueType} value)
-{{
-    {registerInfo.PropertyName}Context.SetValue(value);
-}}
+    public void Set{registerInfo.PropertyName}({fullNameValueType} value)
+    {{
+        {registerInfo.PropertyName}Context.SetValue(value);
+    }}
 
 ";
     }
